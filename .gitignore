@@ -3,5 +3,5 @@
 ################################################################################
 
 /.vs
-/MarsRoverCS/bin/Debug/net8.0
+/MarsRoverCS/bin
 /MarsRoverCS/obj
