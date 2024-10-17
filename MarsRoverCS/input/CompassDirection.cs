@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarsRoverCS.input
 {
-    internal enum CompassDirection
+    public enum CompassDirection
     {
         N,
         E,

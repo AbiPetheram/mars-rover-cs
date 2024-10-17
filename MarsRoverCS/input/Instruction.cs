@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarsRoverCS.input
 {
-    internal enum Instruction
+    public enum Instruction
     {
         L,
         R,
