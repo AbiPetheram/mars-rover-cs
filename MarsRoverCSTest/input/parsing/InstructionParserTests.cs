@@ -12,9 +12,11 @@ namespace MarsRoverCS.input.parsing.Tests
     public class InstructionParserTests
     {
         [TestMethod()]
-        public void ParseInstructionsTest()
+        public void TestNullInstructionThrowsArgumentException()
         {
-            Assert.Fail();
+            var parser = new InstructionParser();
+            Assert.ThrowsException<ArgumentException>(
+                () => parser.ParseInstructions(null));
         }
     }
 }
