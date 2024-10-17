@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MarsRoverCS.input.parsing
 {
-    internal class DirectionParser
+    public class DirectionParser
     {
         public CompassDirection ParseDirection(string input)
         {
             if(input.Length > 0 || !char.IsLetter(input[0]))
             {
-                throw new ArgumentOutOfRangeException(nameof(input));
+                throw new ArgumentException(nameof(input));
             }
             return input.ToUpper() switch
             {
