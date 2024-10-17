@@ -8,13 +8,12 @@ namespace MarsRoverCS.input
 {
     public class Position
     {
-        private Coordinates coordinates { get; set;}
-        private CompassDirection direction { get; set;} 
+        private Coordinates Coordinates { get; set;}
+        private CompassDirection Direction { get; set;} 
 
-        override
-        public string ToString()
+        public override string ToString()
         {
-            return coordinates.x + " " + coordinates.y + " " + direction.ToString();
+            return Coordinates.x + " " + Coordinates.y + " " + Direction.ToString();
         }
     }
 }
