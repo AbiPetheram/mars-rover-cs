@@ -42,5 +42,29 @@ namespace MarsRoverCS.input.parsing.Tests
             Instruction[] result = parser.ParseInstructions("L");
             CollectionAssert.AreEqual(new Instruction[] { Instruction.L }, result);
         }
+
+        [TestMethod()]
+        public void TestReturnsArrayWith5Ls()
+        {
+            var parser = new InstructionParser();
+            Instruction[] result = parser.ParseInstructions("LLLLL");
+            CollectionAssert.AreEqual(
+                new Instruction[] {Instruction.L, Instruction.L, Instruction.L, Instruction.L, Instruction.L }, result);
+        }
+
+        [TestMethod()]
+        public void TestReturnsArrayWithMixedValidInput()
+        {
+            var parser = new InstructionParser();
+            CollectionAssert.AreEqual(
+                new Instruction[] { Instruction.L, Instruction.R, Instruction.M }, 
+                parser.ParseInstructions("LRM"));
+            CollectionAssert.AreEqual(
+                new Instruction[] { Instruction.R, Instruction.R, Instruction.R, Instruction.M },
+                parser.ParseInstructions("RRRM"));
+            CollectionAssert.AreEqual(
+                new Instruction[] { Instruction.M, Instruction.R, Instruction.L, Instruction.M },
+                parser.ParseInstructions("MRLM"));
+        }
     }
 }
