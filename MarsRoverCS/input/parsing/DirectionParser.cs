@@ -10,7 +10,7 @@ namespace MarsRoverCS.input.parsing
     {
         public CompassDirection ParseDirection(string input)
         {
-            if(input.Length > 0 || !char.IsLetter(input[0]))
+            if(input.Length > 1 || !char.IsLetter(input[0]))
             {
                 throw new ArgumentException(nameof(input));
             }
