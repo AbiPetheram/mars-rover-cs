@@ -29,11 +29,20 @@ namespace MarsRoverCSTest.input.parsing.Tests
 
 
         [TestMethod()]
-        public void TestAlphabeticalCharacterThrowsArgumentExceptionn()
+        public void TestAlphabeticalCharacterThrowsArgumentException()
         {
             var parser = new CoordinateParser();
             Assert.ThrowsException<ArgumentException>(
                 () => parser.ParseCoordinates(new string[] { "1", "A" }));
         }
+
+        [TestMethod()]
+        public void TestThreeNumbersInputThrowsArgumentException()
+        {
+            var parser = new CoordinateParser();
+            Assert.ThrowsException<ArgumentException>(
+                () => parser.ParseCoordinates(new string[] { "1", "2", "2" }));
+        }
+
     }
 }
