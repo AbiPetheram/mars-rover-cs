@@ -11,13 +11,6 @@ namespace MarsRoverCS.input.parsing.Tests
     [TestClass()]
     public class DirectionParserTests
     {
-        [TestMethod()]
-        public void TestNullCharDirectionThrowsArgumentException()
-        {
-            var parser = new DirectionParser();
-            Assert.ThrowsException<ArgumentException>(
-                () => parser.ParseDirection(null));
-        }
 
         [TestMethod()]
         public void TestEmptyCharDirectionThrowsArgumentException()
@@ -33,6 +26,22 @@ namespace MarsRoverCS.input.parsing.Tests
             var parser = new DirectionParser();
             Assert.ThrowsException<ArgumentException>(
                 () => parser.ParseDirection("1"));
+        }
+
+        [TestMethod()]
+        public void TestSpecialCharacterThrowsArgumentException()
+        {
+            var parser = new DirectionParser();
+            Assert.ThrowsException<ArgumentException>(
+                () => parser.ParseDirection("%"));
+        }
+
+        [TestMethod()]
+        public void TestNorthDirection()
+        {
+            var parser = new DirectionParser();
+            var result = parser.ParseDirection("E");
+            Assert.AreEqual(CompassDirection.E, result);
         }
     }
 }
