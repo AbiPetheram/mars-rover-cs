@@ -12,7 +12,7 @@ namespace MarsRoverCS.input.parsing.Tests
     public class DirectionParserTests
     {
         [TestMethod()]
-        public void TestNullCharDirectionThrowsIllegalArgumentException()
+        public void TestNullCharDirectionThrowsArgumentException()
         {
             var parser = new DirectionParser();
             Assert.ThrowsException<ArgumentException>(
@@ -20,11 +20,19 @@ namespace MarsRoverCS.input.parsing.Tests
         }
 
         [TestMethod()]
-        public void TestEmptyCharDirectionThrowsIllegalArgumentException()
+        public void TestEmptyCharDirectionThrowsArgumentException()
         {
             var parser = new DirectionParser();
             Assert.ThrowsException<ArgumentException>(
                 () => parser.ParseDirection(" "));
+        }
+
+        [TestMethod()]
+        public void TestNumberDirectionThrowsArgumentException()
+        {
+            var parser = new DirectionParser();
+            Assert.ThrowsException<ArgumentException>(
+                () => parser.ParseDirection("1"));
         }
     }
 }
