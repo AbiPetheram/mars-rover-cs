@@ -18,5 +18,13 @@ namespace MarsRoverCS.input.parsing.Tests
             Assert.ThrowsException<ArgumentException>(
                 () => parser.ParseDirection(null));
         }
+
+        [TestMethod()]
+        public void TestEmptyCharDirectionThrowsIllegalArgumentException()
+        {
+            var parser = new DirectionParser();
+            Assert.ThrowsException<ArgumentException>(
+                () => parser.ParseDirection(" "));
+        }
     }
 }
