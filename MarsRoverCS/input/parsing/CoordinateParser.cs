@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FirstProject.input.parsing
+namespace MarsRoverCS.input.parsing
 {
     public class CoordinateParser
     {
