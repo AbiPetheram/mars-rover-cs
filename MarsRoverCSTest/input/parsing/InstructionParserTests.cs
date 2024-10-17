@@ -34,5 +34,13 @@ namespace MarsRoverCS.input.parsing.Tests
             Assert.ThrowsException<ArgumentException>(
                 () => parser.ParseInstructions("23"));
         }
+
+        [TestMethod()]
+        public void TestReturnsArrayWithL()
+        {
+            var parser = new InstructionParser();
+            Instruction[] result = parser.ParseInstructions("L");
+            CollectionAssert.AreEqual(new Instruction[] { Instruction.L }, result);
+        }
     }
 }
