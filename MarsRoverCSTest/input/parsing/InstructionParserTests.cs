@@ -36,6 +36,14 @@ namespace MarsRoverCS.input.parsing.Tests
         }
 
         [TestMethod()]
+        public void TestInvalidAlphabeticalInstructionThrowsArgumentException()
+        {
+            var parser = new InstructionParser();
+            Assert.ThrowsException<ArgumentException>(
+                () => parser.ParseInstructions("MLMRLP"));
+        }
+
+        [TestMethod()]
         public void TestReturnsArrayWithL()
         {
             var parser = new InstructionParser();
