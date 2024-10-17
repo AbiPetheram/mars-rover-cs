@@ -18,5 +18,13 @@ namespace MarsRoverCS.input.parsing.Tests
             Assert.ThrowsException<ArgumentException>(
                 () => parser.ParseInstructions(null));
         }
+
+        [TestMethod()]
+        public void TestEmptyStringInstructionThrowsArgumentException()
+        {
+            var parser = new InstructionParser();
+            Assert.ThrowsException<ArgumentException>(
+                () => parser.ParseInstructions(""));
+        }
     }
 }
