@@ -6,17 +6,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FirstProject.input.parsing.Tests
+namespace MarsRoverCSTest.input.parsing.Tests
 {
     [TestClass()]
     public class CoordinateParserTests
     {
         [TestMethod()]
-        public void TestNullCoordinateThrowsIllegalArgumentException()
+        public void TestNullCoordinateThrowsArgumentException()
         {
             var parser = new CoordinateParser();
             Assert.ThrowsException<ArgumentException>(
                 () => parser.ParseCoordinates(null));
+        }
+
+        [TestMethod()]
+        public void TestArrayOfOneCoordinateThrowsArgumentException()
+        {
+            var parser = new CoordinateParser();
+            Assert.ThrowsException<ArgumentException>(
+                () => parser.ParseCoordinates(new string[] {"1"}));
         }
     }
 }
