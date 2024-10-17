@@ -74,5 +74,20 @@ namespace MarsRoverCS.input.parsing.Tests
                 new Instruction[] { Instruction.M, Instruction.R, Instruction.L, Instruction.M },
                 parser.ParseInstructions("MRLM"));
         }
+
+        [TestMethod()]
+        public void TestReturnsArrayWithValidLowerCaseInput()
+        {
+            var parser = new InstructionParser();
+            CollectionAssert.AreEqual(
+                new Instruction[] { Instruction.L, Instruction.R, Instruction.M },
+                parser.ParseInstructions("lrm"));
+            CollectionAssert.AreEqual(
+                new Instruction[] { Instruction.M, Instruction.R, Instruction.M },
+                parser.ParseInstructions("mrm"));
+            CollectionAssert.AreEqual(
+                new Instruction[] { Instruction.M, Instruction.R, Instruction.L, Instruction.M },
+                parser.ParseInstructions("mrlm"));
+        }
     }
 }
