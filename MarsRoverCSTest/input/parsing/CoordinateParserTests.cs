@@ -26,5 +26,14 @@ namespace MarsRoverCSTest.input.parsing.Tests
             Assert.ThrowsException<ArgumentException>(
                 () => parser.ParseCoordinates(new string[] {"1"}));
         }
+
+
+        [TestMethod()]
+        public void TestAlphabeticalCharacterThrowsArgumentExceptionn()
+        {
+            var parser = new CoordinateParser();
+            Assert.ThrowsException<ArgumentException>(
+                () => parser.ParseCoordinates(new string[] { "1", "A" }));
+        }
     }
 }
