@@ -8,7 +8,7 @@ namespace FirstProject.input.parsing
 {
     internal class CoordinateParser
     {
-        public Coordinates parseCoordinates(string[] input)
+        public Coordinates ParseCoordinates(string[] input)
         {
             if(input == null || input.Length != 2)
             {
@@ -18,7 +18,7 @@ namespace FirstProject.input.parsing
                 throw new ArgumentOutOfRangeException();
             } else
             {
-                return new Coordinates(Int32.Parse(input[0]), Int32.Parse(input[1]));
+                return new Coordinates(int.Parse(input[0]), int.Parse(input[1]));
             }
         }
     }
