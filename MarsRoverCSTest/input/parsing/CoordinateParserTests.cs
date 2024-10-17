@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarsRoverCS.input;
 
 namespace MarsRoverCSTest.input.parsing.Tests
 {
@@ -42,6 +43,22 @@ namespace MarsRoverCSTest.input.parsing.Tests
             var parser = new CoordinateParser();
             Assert.ThrowsException<ArgumentException>(
                 () => parser.ParseCoordinates(new string[] { "1", "2", "2" }));
+        }
+
+        [TestMethod()]
+        public void TestCoordinatesReturnedWhenTwoNumbersInput()
+        {
+            var parser = new CoordinateParser();
+            var result = parser.ParseCoordinates(new string[] { "1", "2" });
+            Assert.Equals(new Coordinates(1, 2), result);
+        }
+
+        [TestMethod()]
+        public void TestCoordinatesReturnedWhenTwoDoubleDigitNumbersInput()
+        {
+            var parser = new CoordinateParser();
+            var result = parser.ParseCoordinates(new string[] { "12", "26" });
+            Assert.Equals(new Coordinates(12, 26), result);
         }
 
     }
