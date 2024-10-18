@@ -11,9 +11,9 @@ namespace MarsRoverCS.logic
     {
         private Coordinates Size { get; set; }
 
-        public Plateau(Coordinates Size) 
+        public Plateau(Coordinates size) 
         {
-            this.Size = Size;
+            this.Size = size;
         }
     }
 }
