@@ -8,6 +8,12 @@ namespace MarsRoverCS.input
 {
     public class Position
     {
+        public Position(Coordinates coordinates, CompassDirection direction)
+        {
+            Coordinates = coordinates;
+            Direction = direction;
+        }
+
         private Coordinates Coordinates { get; set;}
         private CompassDirection Direction { get; set;} 
 
