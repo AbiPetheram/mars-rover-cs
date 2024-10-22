@@ -82,5 +82,18 @@ namespace MarsRoverCS.logic.Tests
             var expected = new Position(new Coordinates(x, y), Direction);
             Assert.IsTrue(IsSamePosition(expected));
         }
+
+        [DataRow(CompassDirection.N, CompassDirection.E, Instruction.R)]
+        [DataRow(CompassDirection.E, CompassDirection.S, Instruction.R)]
+        [DataRow(CompassDirection.S, CompassDirection.W, Instruction.R)]
+        [DataRow(CompassDirection.W, CompassDirection.N, Instruction.R)]
+        [DataTestMethod]
+        public void TestRotateRightOnceAllDirections(CompassDirection Initial, CompassDirection Resulting, Instruction Right)
+        {
+            SetUpSafePositionNorth();
+            Rover.Position.Direction = Initial;
+            Rover.move(new Instruction[] { Right });
+            Assert.AreEqual(Resulting, Rover.Position.Direction);
+        }
     }
 }
