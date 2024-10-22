@@ -22,14 +22,18 @@ namespace MarsRoverCS.logic
         {
             foreach (Instruction instruction in instructions)
             {
-                if(instruction == Instruction.M)
+                if (instruction == Instruction.M)
                 {
-                    moveForward(instruction);
+                    MoveForward();
+                }
+                else if (instruction == Instruction.R)
+                {
+                    RotateRight();
                 }
             }
         }
 
-        private void moveForward(Instruction instruction)
+        private void MoveForward()
         {
             switch (Position.Direction)
             {
@@ -44,6 +48,25 @@ namespace MarsRoverCS.logic
                     break;
                 case CompassDirection.W:
                     Position = new Position(new Coordinates(Position.Coordinates.x - 1, Position.Coordinates.y), Position.Direction);
+                    break;
+            }
+        }
+
+        private void RotateRight()
+        {
+            switch (Position.Direction)
+            {
+                case CompassDirection.N:
+                    Position = new Position(Position.Coordinates, CompassDirection.E);
+                    break;
+                case CompassDirection.E:
+                    Position = new Position(Position.Coordinates, CompassDirection.S);
+                    break;
+                case CompassDirection.S:
+                    Position = new Position(Position.Coordinates, CompassDirection.W);
+                    break;
+                case CompassDirection.W:
+                    Position = new Position(Position.Coordinates, CompassDirection.N);
                     break;
             }
         }
