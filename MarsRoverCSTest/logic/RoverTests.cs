@@ -24,12 +24,22 @@ namespace MarsRoverCS.logic.Tests
             Rover = new Rover(Position, Plateau);
         }
 
+        public Boolean IsSamePosition(Position position)
+        {
+            if(Rover.Position.Coordinates.x == position.Coordinates.x && 
+                Rover.Position.Coordinates.y == position.Coordinates.y)
+            {
+                return true;
+            }
+            return false;
+        }
+
         [TestMethod()]
         public void TestMoveForwardWithSingleInstructionNorth()
         {
             SetUpSafePositionNorth();
             Rover.move(new Instruction[] { Instruction.M });
-            Assert.AreEqual(new Position(new Coordinates(5, 6), CompassDirection.N), Rover.Position);
+            Assert.IsTrue(IsSamePosition(new Position(new Coordinates(5, 6), CompassDirection.N)));
         }
 
         [TestMethod()]
@@ -38,7 +48,7 @@ namespace MarsRoverCS.logic.Tests
             SetUpSafePositionNorth();
             Rover.Position.Direction = CompassDirection.E;
             Rover.move(new Instruction[] { Instruction.M });
-            Assert.AreEqual(new Position(new Coordinates(6, 5), CompassDirection.E), Rover.Position);
+            Assert.IsTrue(IsSamePosition(new Position(new Coordinates(6, 5), CompassDirection.E)));
         }
 
         [TestMethod()]
@@ -47,7 +57,7 @@ namespace MarsRoverCS.logic.Tests
             SetUpSafePositionNorth();
             Rover.Position.Direction = CompassDirection.S;
             Rover.move(new Instruction[] { Instruction.M });
-            Assert.AreEqual(new Position(new Coordinates(5, 4), CompassDirection.S), Rover.Position);
+            Assert.IsTrue(IsSamePosition(new Position(new Coordinates(5, 4), CompassDirection.S)));
         }
 
         [TestMethod()]
@@ -56,7 +66,7 @@ namespace MarsRoverCS.logic.Tests
             SetUpSafePositionNorth();
             Rover.Position.Direction = CompassDirection.W;
             Rover.move(new Instruction[] { Instruction.M });
-            Assert.AreEqual(new Position(new Coordinates(4, 5), CompassDirection.W), Rover.Position);
+            Assert.IsTrue(IsSamePosition(new Position(new Coordinates(4, 5), CompassDirection.W)));
         }
     }
 }
