@@ -30,6 +30,10 @@ namespace MarsRoverCS.logic
                 {
                     RotateRight();
                 }
+                else if(instruction == Instruction.L)
+                {
+                    RotateLeft();
+                }
             }
         }
 
@@ -67,6 +71,25 @@ namespace MarsRoverCS.logic
                     break;
                 case CompassDirection.W:
                     Position = new Position(Position.Coordinates, CompassDirection.N);
+                    break;
+            }
+        }
+
+        private void RotateLeft()
+        {
+            switch (Position.Direction)
+            {
+                case CompassDirection.N:
+                    Position = new Position(Position.Coordinates, CompassDirection.W);
+                    break;
+                case CompassDirection.E:
+                    Position = new Position(Position.Coordinates, CompassDirection.N);
+                    break;
+                case CompassDirection.S:
+                    Position = new Position(Position.Coordinates, CompassDirection.E);
+                    break;
+                case CompassDirection.W:
+                    Position = new Position(Position.Coordinates, CompassDirection.S);
                     break;
             }
         }
