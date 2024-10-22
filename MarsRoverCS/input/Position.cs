@@ -14,8 +14,8 @@ namespace MarsRoverCS.input
             Direction = direction;
         }
 
-        private Coordinates Coordinates { get; set;}
-        private CompassDirection Direction { get; set;} 
+        public Coordinates Coordinates { get; set;}
+        public CompassDirection Direction { get; set;} 
 
         public override string ToString()
         {
