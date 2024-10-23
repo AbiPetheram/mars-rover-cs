@@ -9,7 +9,7 @@ namespace MarsRoverCS.logic
 {
     public class Plateau
     {
-        private Coordinates Size { get; set; }
+        public Coordinates Size { get; set; }
 
         public Plateau(Coordinates size) 
         {
