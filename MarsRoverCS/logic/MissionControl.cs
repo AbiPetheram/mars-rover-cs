@@ -18,13 +18,32 @@ namespace MarsRoverCS.logic
 
         public Plateau CreatePlateau(Coordinates Coordinates)
         {
-            if(Coordinates == null)
+            if (Coordinates == null)
             {
                 throw new ArgumentNullException(nameof(Coordinates));
             }
             Plateau plateau = new Plateau(Coordinates);
-            PlateauRovers.Add(plateau, new List<Rover>()); 
+            PlateauRovers.Add(plateau, new List<Rover>());
             return plateau;
+        }
+
+        public Rover CreateRover(Position position, Plateau plateau)
+        {
+            if (position == null)
+            {
+                throw new ArgumentNullException(nameof(position));
+            }
+            else if (plateau == null)
+            {
+                throw new ArgumentNullException(nameof(plateau));
+            }
+            if (!PlateauRovers.ContainsKey(plateau))
+            {
+                PlateauRovers.Add(plateau, new List<Rover> { });
+            }
+            Rover rover = new Rover(position, plateau);
+            PlateauRovers[plateau].Add(rover);
+            return rover;
         }
     }
 }
