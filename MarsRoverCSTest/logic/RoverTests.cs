@@ -124,5 +124,22 @@ namespace MarsRoverCS.logic.Tests
             Rover.move(new Instruction[] { Instruciton1, Instruciton2, Instruciton3 });
             Assert.AreEqual(Resulting, Rover.Position.Direction);
         }
+
+        [DataRow(CompassDirection.N, CompassDirection.S, 6, 4, Instruction.R, Instruction.M, Instruction.R, Instruction.M)]
+        [DataRow(CompassDirection.E, CompassDirection.W, 3, 5, Instruction.L, Instruction.L, Instruction.M, Instruction.M)]
+        [DataRow(CompassDirection.S, CompassDirection.W, 3, 4, Instruction.M, Instruction.R, Instruction.M, Instruction.M)]
+        [DataRow(CompassDirection.N, CompassDirection.E, 6, 5, Instruction.L, Instruction.L, Instruction.L, Instruction.M)]
+        [DataRow(CompassDirection.W, CompassDirection.E, 6, 4, Instruction.L, Instruction.M, Instruction.L, Instruction.M)]
+        [DataTestMethod]
+        public void TestMixedInstructions(CompassDirection Initial, CompassDirection Resulting, int x, int y,
+            Instruction Instruciton1, Instruction Instruciton2, Instruction Instruciton3, Instruction Instruction4)
+        {
+            SetUpSafePositionNorth();
+            Rover.Position.Direction = Initial;
+            Rover.move(new Instruction[] { Instruciton1, Instruciton2, Instruciton3, Instruction4 });
+            Assert.AreEqual(Resulting, Rover.Position.Direction);
+            Assert.AreEqual(x, Rover.Position.Coordinates.x);
+            Assert.AreEqual(y, Rover.Position.Coordinates.y);
+        }
     }
 }
