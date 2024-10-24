@@ -57,5 +57,15 @@ namespace MarsRoverCS.logic.Tests
             Boolean result = missionControl.IsPositionInPlateau(new Coordinates(2, 3), plateau);
             Assert.IsTrue(result);
         }
+
+        [TestMethod()]
+        public void TestIsPositionInPlateauWhenCoordiates00()
+        {
+            var missionControl = new MissionControl();
+            var plateau = missionControl.CreatePlateau(new Coordinates(2, 3));
+            Boolean result = missionControl.IsPositionInPlateau(new Coordinates(0, 0), plateau);
+            Assert.IsTrue(result);
+
+        }
     }
 }
