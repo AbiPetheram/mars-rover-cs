@@ -57,5 +57,17 @@ namespace MarsRoverCS.logic
             }
             return false;
         }
+
+        public Boolean IsPositionEmpty(Coordinates coordinates, Plateau plateau)
+        {
+            foreach (Rover rover in PlateauRovers[plateau])
+            {
+                if (rover.Position.Coordinates.Equals(coordinates))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
