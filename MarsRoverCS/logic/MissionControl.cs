@@ -45,5 +45,17 @@ namespace MarsRoverCS.logic
             PlateauRovers[plateau].Add(rover);
             return rover;
         }
+
+        public Boolean IsPositionInPlateau(Coordinates coordinates, Plateau plateau)
+        {
+            if(coordinates.x <= plateau.Size.x && coordinates.x >= 0)
+            {
+                if(coordinates.y <= plateau.Size.y && coordinates.y >= 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
