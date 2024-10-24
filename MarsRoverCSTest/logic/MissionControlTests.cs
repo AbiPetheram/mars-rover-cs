@@ -48,5 +48,14 @@ namespace MarsRoverCS.logic.Tests
             Assert.AreEqual(1, rover.Position.Coordinates.x);
             Assert.AreEqual(1, rover.Position.Coordinates.y);
         }
+
+        [TestMethod()]
+        public void TestIsPositionInPlateauWhenCoordinatesMaxSize()
+        {
+            var missionControl = new MissionControl();
+            var plateau = missionControl.CreatePlateau(new Coordinates(2, 3));
+            Boolean result = missionControl.IsPositionInPlateau(new Coordinates(2, 3), plateau);
+            Assert.IsTrue(result);
+        }
     }
 }
