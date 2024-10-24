@@ -85,5 +85,16 @@ namespace MarsRoverCS.logic.Tests
             Boolean result = missionControl.IsPositionInPlateau(new Coordinates(1, 4), plateau);
             Assert.IsFalse(result);
         }
+
+        [TestMethod()]
+        public void TestIsPositionInPlateauWithNegativeCoordinates()
+        {
+            var missionControl = new MissionControl();
+            var plateau = missionControl.CreatePlateau(new Coordinates(5, 5));
+            Boolean result = missionControl.IsPositionInPlateau(new Coordinates(-1, 4), plateau);
+            Boolean result2 = missionControl.IsPositionInPlateau(new Coordinates(1, -4), plateau);
+            Assert.IsFalse(result);
+            Assert.IsFalse(result2);
+        }
     }
 }
