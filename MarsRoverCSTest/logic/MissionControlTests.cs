@@ -96,5 +96,20 @@ namespace MarsRoverCS.logic.Tests
             Assert.IsFalse(result);
             Assert.IsFalse(result2);
         }
+
+        [TestMethod()]
+        public void TestIsPositionEmpty()
+        {
+            var missionControl = new MissionControl();
+            var plateau = missionControl.CreatePlateau(new Coordinates(5, 5));
+            var rover = missionControl.CreateRover(new Position(new Coordinates(2,2), CompassDirection.N), plateau);
+            var rover2 = missionControl.CreateRover(new Position(new Coordinates(2, 1), CompassDirection.N), plateau);
+            Boolean result = missionControl.IsPositionEmpty(new Coordinates(2, 2), plateau);
+            Boolean result2 = missionControl.IsPositionEmpty(new Coordinates(2, 1), plateau);
+            Boolean result3 = missionControl.IsPositionEmpty(new Coordinates(1, 1), plateau);
+            Assert.IsFalse(result);
+            Assert.IsFalse(result2);
+            Assert.IsTrue(result3);
+        }
     }
 }
