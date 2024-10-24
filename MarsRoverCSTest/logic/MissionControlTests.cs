@@ -67,5 +67,14 @@ namespace MarsRoverCS.logic.Tests
             Assert.IsTrue(result);
 
         }
+
+        [TestMethod()]
+        public void TestReturnsFalseWhenXCoordinateBiggerThanPlateau()
+        {
+            var missionControl = new MissionControl();
+            var plateau = missionControl.CreatePlateau(new Coordinates(2, 3));
+            Boolean result = missionControl.IsPositionInPlateau(new Coordinates(3, 1), plateau);
+            Assert.IsFalse(result);
+        }
     }
 }
