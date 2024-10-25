@@ -143,5 +143,12 @@ namespace MarsRoverCS.logic.Tests
             Assert.AreEqual(x, Rover.Position.Coordinates.x);
             Assert.AreEqual(y, Rover.Position.Coordinates.y);
         }
+
+        [TestMethod()]
+        public void TestMoveWhenEndCoordinatesBiggerThanPlateau()
+        {
+            SetUpSafePositionNorth();
+            Assert.ThrowsException<ArgumentException>(() => Rover.move(new Instruction[] { Instruction.M, Instruction.M, Instruction.M, Instruction.M, Instruction.M, Instruction.M }));
+        }
     }
 }
