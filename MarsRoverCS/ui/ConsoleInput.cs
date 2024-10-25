@@ -3,6 +3,7 @@ using MarsRoverCS.input.parsing;
 using MarsRoverCS.logic;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,6 +75,28 @@ namespace MarsRoverCS.ui
                 {
                     Console.WriteLine("Invalid input, please try again");
                 }
+            }
+        }
+
+        public void OptionsList(Plateau plateau, Rover rover)
+        {
+            Console.WriteLine("What would you like to do next?\n1. Add another rover\n2. Move current rover again\n3. Quit");
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    MoveRover(GetRover(plateau));
+                    break;
+                case "2":
+                    MoveRover(rover);
+                    break;
+                case "3":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please enter a number between 1 and 3");
+                    OptionsList(plateau, rover);
+                    break;
+
             }
         }
     }
