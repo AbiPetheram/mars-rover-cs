@@ -1,4 +1,5 @@
 ﻿using MarsRoverCS.input;
+using MarsRoverCS.ui;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,15 @@ namespace MarsRoverCS.logic
                 }
             }
             return true;
+        }
+
+        public void start()
+        {
+            var consoleInput = new ConsoleInput(this);
+            var plateau = consoleInput.GetPlateau();
+            var rover = consoleInput.GetRover(plateau);
+            consoleInput.MoveRover(rover);
+            consoleInput.OptionsList(plateau, rover);
         }
     }
 }
