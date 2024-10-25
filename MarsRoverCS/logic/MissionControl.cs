@@ -41,6 +41,10 @@ namespace MarsRoverCS.logic
             {
                 PlateauRovers.Add(plateau, new List<Rover> { });
             }
+            if(!IsPositionEmpty(position.Coordinates, plateau))
+            {
+                throw new ArgumentException();
+            }
             Rover rover = new Rover(position, plateau);
             PlateauRovers[plateau].Add(rover);
             return rover;
