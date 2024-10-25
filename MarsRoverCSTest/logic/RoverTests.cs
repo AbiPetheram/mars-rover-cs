@@ -16,12 +16,14 @@ namespace MarsRoverCS.logic.Tests
         private Position Position;
         private Plateau Plateau;
         private Rover Rover;
+        private MissionControl MissionControl;
 
         public void SetUpSafePositionNorth()
         {
             Position = new Position(new Coordinates(5, 5), CompassDirection.N);
             Plateau = new Plateau(new Coordinates(10, 10));
-            Rover = new Rover(Position, Plateau);
+            MissionControl = new MissionControl();
+            Rover = MissionControl.CreateRover(Position, Plateau);
         }
 
         public Boolean IsSamePosition(Position position)

@@ -50,7 +50,7 @@ namespace MarsRoverCSTest.input.parsing.Tests
         {
             var parser = new CoordinateParser();
             var result = parser.ParseCoordinates(new string[] { "1", "2" });
-            Assert.Equals(new Coordinates(1, 2), result);
+            Assert.AreEqual(new Coordinates(1, 2), result);
         }
 
         [TestMethod()]
@@ -58,7 +58,7 @@ namespace MarsRoverCSTest.input.parsing.Tests
         {
             var parser = new CoordinateParser();
             var result = parser.ParseCoordinates(new string[] { "12", "26" });
-            Assert.Equals(new Coordinates(12, 26), result);
+            Assert.AreEqual(new Coordinates(12, 26), result);
         }
 
     }
