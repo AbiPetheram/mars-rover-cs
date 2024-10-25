@@ -41,20 +41,27 @@ namespace MarsRoverCS.logic
 
         private void MoveForward()
         {
+            var newPosition = new Position(new Coordinates(0,0), CompassDirection.N);
             switch (Position.Direction)
             {
                 case CompassDirection.N:
-                    Position = new Position(new Coordinates(Position.Coordinates.x, Position.Coordinates.y + 1), Position.Direction);
+                    newPosition = new Position(new Coordinates(Position.Coordinates.x, Position.Coordinates.y + 1), Position.Direction);
                     break;
                 case CompassDirection.E:
-                    Position = new Position(new Coordinates(Position.Coordinates.x + 1, Position.Coordinates.y), Position.Direction);
+                    newPosition = new Position(new Coordinates(Position.Coordinates.x + 1, Position.Coordinates.y), Position.Direction);
                     break;
                 case CompassDirection.S:
-                    Position = new Position(new Coordinates(Position.Coordinates.x, Position.Coordinates.y - 1), Position.Direction);
+                    newPosition = new Position(new Coordinates(Position.Coordinates.x, Position.Coordinates.y - 1), Position.Direction);
                     break;
                 case CompassDirection.W:
-                    Position = new Position(new Coordinates(Position.Coordinates.x - 1, Position.Coordinates.y), Position.Direction);
+                    newPosition = new Position(new Coordinates(Position.Coordinates.x - 1, Position.Coordinates.y), Position.Direction);
                     break;
+            }
+            if (!MissionControl.IsPositionInPlateau(newPosition.Coordinates, Plateau) || !MissionControl.IsPositionEmpty(newPosition.Coordinates, Plateau)){
+                throw new ArgumentException();
+            } else
+            {
+                Position = newPosition;
             }
         }
 
