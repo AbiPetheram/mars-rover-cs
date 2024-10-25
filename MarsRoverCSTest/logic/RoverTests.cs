@@ -150,5 +150,13 @@ namespace MarsRoverCS.logic.Tests
             SetUpSafePositionNorth();
             Assert.ThrowsException<ArgumentException>(() => Rover.move(new Instruction[] { Instruction.M, Instruction.M, Instruction.M, Instruction.M, Instruction.M, Instruction.M }));
         }
+
+        [TestMethod()]
+        public void TestMoveWhenEndCoordinatesNegative()
+        {
+            SetUpSafePositionNorth();
+            Rover.Position = new Position(new Coordinates(0, 0), CompassDirection.S);
+            Assert.ThrowsException<ArgumentException>(() => Rover.move(new Instruction[] { Instruction.M }));
+        }
     }
 }
