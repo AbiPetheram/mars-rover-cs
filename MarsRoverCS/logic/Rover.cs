@@ -11,11 +11,13 @@ namespace MarsRoverCS.logic
     {
         public Position Position { get; set; }
         public Plateau Plateau { get; set; }
+        private MissionControl MissionControl { get; set; }
 
-        public Rover(Position position, Plateau plateau)
+        public Rover(Position position, Plateau plateau, MissionControl missionControl)
         {
             Position = position;
             Plateau = plateau;
+            MissionControl = missionControl;
         }
 
         public void move(Instruction[] instructions)
