@@ -46,10 +46,29 @@ namespace MarsRoverCS.ui
             {
                 try
                 {
-                    String[] input = Console.ReadLine()?.ToString().Split(' ') ?? new string[3];
+                    String[] input = Console.ReadLine()?.ToString().Split(' ') ?? new string[2];
                     var coordinates = CoordinateParser.ParseCoordinates(new string[] { input[0], input[1] });
                     var direction = DirectionParser.ParseDirection(input[2]);
                     return MissionControl.CreateRover(new Position(coordinates, direction), plateau);
+                }
+                catch (Exception e) when (e is ArgumentException || e is ArgumentNullException || e is IndexOutOfRangeException)
+                {
+                    Console.WriteLine("Invalid input, please try again");
+                }
+            }
+        }
+
+        public void MoveRover(Rover rover)
+        {
+            Console.WriteLine("Take your rover for a walk. Enter a series of turn and move commands: ");
+            while (true)
+            {
+                try
+                {
+                    var input = InstructionParser.ParseInstructions(Console.ReadLine()?.ToString() ?? "");
+                    rover.move(input);
+                    Console.WriteLine("The rover is now in position " + rover.Position.ToString());
+                    return;
                 }
                 catch (Exception e) when (e is ArgumentException || e is ArgumentNullException)
                 {
