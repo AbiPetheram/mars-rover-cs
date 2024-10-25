@@ -1,2 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+using MarsRoverCS.logic;
+
+var MissionControl = new MissionControl();
+MissionControl.start();
